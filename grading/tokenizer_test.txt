@@ -1,0 +1,101 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36mcs.msu.edu:CSCI_466_Project[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding CSCI_466_Project 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mCSCI_466_Project[0;1m ---[m
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] Copying 5 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mCSCI_466_Project[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;33mWARNING[m] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[[1;34mINFO[m] Compiling 47 source files to /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/target/classes
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/main/java/edu/montana/csci/csci468/bytecode/MethodGenerator.java: /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/main/java/edu/montana/csci/csci468/bytecode/MethodGenerator.java uses or overrides a deprecated API.
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/main/java/edu/montana/csci/csci468/bytecode/MethodGenerator.java: Recompile with -Xlint:deprecation for details.
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/main/java/edu/montana/csci/csci468/parser/CatscriptType.java: Some input files use unchecked or unsafe operations.
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/main/java/edu/montana/csci/csci468/parser/CatscriptType.java: Recompile with -Xlint:unchecked for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mCSCI_466_Project[0;1m ---[m
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] skip non existing resourceDirectory /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mCSCI_466_Project[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;33mWARNING[m] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[[1;34mINFO[m] Compiling 17 source files to /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/target/test-classes
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/test/java/edu/montana/csci/csci468/CatscriptTestBase.java: /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/test/java/edu/montana/csci/csci468/CatscriptTestBase.java uses unchecked or unsafe operations.
+[[1;33mWARNING[m] /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/src/test/java/edu/montana/csci/csci468/CatscriptTestBase.java: Recompile with -Xlint:unchecked for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.22.1:test[m [1m(default-test)[m @ [36mCSCI_466_Project[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running edu.montana.csci.csci468.tokenizer.[1mCatScriptTokenizerTest[m
+[[1;31mERROR[m] [1;31mTests [0;1mrun: [0;1m15[m, [1;31mFailures: [0;1;31m8[m, Errors: 0, Skipped: 0, Time elapsed: 0.074 s[1;31m <<< FAILURE![m - in edu.montana.csci.csci468.tokenizer.[1mCatScriptTokenizerTest[m
+[[1;31mERROR[m] linesAreCorrect  Time elapsed: 0.033 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.linesAreCorrect(CatScriptTokenizerTest.java:98)
+
+[[1;31mERROR[m] basicString  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[STRING, EOF]> but was: <[ERROR, IDENTIFIER, ERROR, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.basicString(CatScriptTokenizerTest.java:33)
+
+[[1;31mERROR[m] basicSyntax  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE, LEFT_BRACKET, RIGHT_BRACKET, COLON, COMMA, DOT, MINUS, PLUS, SLASH, STAR, BANG_EQUAL, EQUAL, EQUAL_EQUAL, GREATER, GREATER_EQUAL, LESS, LESS_EQUAL, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, MINUS, PLUS, ERROR, ERROR, ERROR, EQUAL, EQUAL, EQUAL_EQUAL, ERROR, ERROR, EQUAL, ERROR, ERROR, EQUAL, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.basicSyntax(CatScriptTokenizerTest.java:65)
+
+[[1;31mERROR[m] compoundTokensTokenizeProperly  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[STRING, DOT, STRING, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.compoundTokensTokenizeProperly(CatScriptTokenizerTest.java:86)
+
+[[1;31mERROR[m] commentsAreIgnored  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[SLASH, SLASH, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, IDENTIFIER, ERROR, IDENTIFIER, ERROR, ERROR, ERROR, ERROR, IDENTIFIER, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.commentsAreIgnored(CatScriptTokenizerTest.java:78)
+
+[[1;31mERROR[m] listLiteralTokenization  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[LEFT_BRACKET, INTEGER, COMMA, INTEGER, COMMA, INTEGER, RIGHT_BRACKET, EOF]> but was: <[ERROR, INTEGER, ERROR, INTEGER, ERROR, INTEGER, ERROR, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.listLiteralTokenization(CatScriptTokenizerTest.java:91)
+
+[[1;31mERROR[m] lineOffsetsAreCorrect  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.lineOffsetsAreCorrect(CatScriptTokenizerTest.java:106)
+
+[[1;31mERROR[m] unterminatedStrings  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[ERROR, EOF]> but was: <[ERROR, IDENTIFIER, EOF]>
+	at edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest.unterminatedStrings(CatScriptTokenizerTest.java:42)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] [1;31mFailures: [m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.basicString:33->CatscriptTestBase.assertTokensAre:62 expected: <[STRING, EOF]> but was: <[ERROR, IDENTIFIER, ERROR, EOF]>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.basicSyntax:65->CatscriptTestBase.assertTokensAre:62 expected: <[LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE, LEFT_BRACKET, RIGHT_BRACKET, COLON, COMMA, DOT, MINUS, PLUS, SLASH, STAR, BANG_EQUAL, EQUAL, EQUAL_EQUAL, GREATER, GREATER_EQUAL, LESS, LESS_EQUAL, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, MINUS, PLUS, ERROR, ERROR, ERROR, EQUAL, EQUAL, EQUAL_EQUAL, ERROR, ERROR, EQUAL, ERROR, ERROR, EQUAL, EOF]>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.commentsAreIgnored:78->CatscriptTestBase.assertTokensAre:62 expected: <[SLASH, SLASH, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, ERROR, IDENTIFIER, ERROR, IDENTIFIER, ERROR, ERROR, ERROR, ERROR, IDENTIFIER, EOF]>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.compoundTokensTokenizeProperly:86->CatscriptTestBase.assertTokensAre:62 expected: <[STRING, DOT, STRING, EOF]> but was: <[ERROR, ERROR, ERROR, ERROR, ERROR, EOF]>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.lineOffsetsAreCorrect:106 expected: <1> but was: <0>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.linesAreCorrect:98 expected: <2> but was: <1>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.listLiteralTokenization:91->CatscriptTestBase.assertTokensAre:62 expected: <[LEFT_BRACKET, INTEGER, COMMA, INTEGER, COMMA, INTEGER, RIGHT_BRACKET, EOF]> but was: <[ERROR, INTEGER, ERROR, INTEGER, ERROR, INTEGER, ERROR, EOF]>[m
+[[1;31mERROR[m] [1;31m  CatScriptTokenizerTest.unterminatedStrings:42->CatscriptTestBase.assertTokensAre:62 expected: <[ERROR, EOF]> but was: <[ERROR, IDENTIFIER, EOF]>[m
+[[1;34mINFO[m] 
+[[1;31mERROR[m] [1;31mTests run: 15, Failures: 8, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  4.971 s
+[[1;34mINFO[m] Finished at: 2021-01-27T14:26:23-07:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:2.22.1:test[m [1m(default-test)[m on project [36mCSCI_466_Project[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mPlease refer to /home/carson/Projects/msu/csci-466-spring2021/grading/scripts/repos/gaberial_darity/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
