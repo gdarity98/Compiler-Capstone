@@ -10,6 +10,9 @@ import edu.montana.csci.csci468.tokenizer.Token;
 import edu.montana.csci.csci468.tokenizer.TokenType;
 import org.objectweb.asm.Opcodes;
 
+import static edu.montana.csci.csci468.tokenizer.TokenType.MINUS;
+import static edu.montana.csci.csci468.tokenizer.TokenType.PLUS;
+
 public class AdditiveExpression extends Expression {
 
     private final Token operator;
