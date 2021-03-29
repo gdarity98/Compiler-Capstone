@@ -63,6 +63,10 @@ public class CatScriptParser {
             return varStmt;
         }
 
+        Statement assFunStmt = parseAssignmentOrFunctionStatement();
+        if(assFunStmt != null){
+            return assFunStmt;
+        }
         return new SyntaxErrorStatement(tokens.consumeToken());
     }
 
@@ -133,6 +137,18 @@ public class CatScriptParser {
             require(EQUAL, variableStatement);
             variableStatement.setExpression(parseExpression());
             return variableStatement;
+        }else{
+            return null;
+        }
+    }
+
+    private Statement parseAssignmentOrFunctionStatement(){
+        if(tokens.match(IDENTIFIER)){
+            if(tokens.match(LEFT_PAREN)){
+                return parseFunctionCallStatement();
+            }else{
+                return parseAssignmentStatement();
+            }
         }else{
             return null;
         }
