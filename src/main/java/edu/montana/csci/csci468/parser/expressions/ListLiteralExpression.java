@@ -5,6 +5,9 @@ import edu.montana.csci.csci468.eval.CatscriptRuntime;
 import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.SymbolTable;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,7 +33,14 @@ public class ListLiteralExpression extends Expression {
         }
         if (values.size() > 0) {
             // TODO - generalize this looking at all objects in list
+            // I think I did it?
             type = CatscriptType.getListType(values.get(0).getType());
+            for(int i = 0; i< values.size();i++){
+                if(type != CatscriptType.getListType(values.get(i).getType())){
+                    type = CatscriptType.getListType(CatscriptType.OBJECT);
+                    break;
+                }
+            }
         } else {
             type = CatscriptType.getListType(CatscriptType.OBJECT);
         }
@@ -47,7 +57,12 @@ public class ListLiteralExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        return super.evaluate(runtime);
+        Object vals[] = new Object[values.size()];
+        for(int i = 0;i<vals.length;i++){
+            vals[i] = values.get(i).evaluate();
+        }
+        List<Object> val = Arrays.asList(vals);
+        return val;
     }
 
     @Override

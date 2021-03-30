@@ -44,9 +44,13 @@ public class AdditiveExpression extends Expression {
                 leftHandSide.addError(ErrorType.INCOMPATIBLE_TYPES);
             }
             if (!rightHandSide.getType().equals(CatscriptType.INT)) {
-                rightHandSide.addError(ErrorType.INCOMPATIBLE_TYPES);
+               rightHandSide.addError(ErrorType.INCOMPATIBLE_TYPES);
             }
         }
+        // I'm not sure if this handles strings
+        //    there was a problem in my tokenizer showing that the + in  'a' + 1
+        //    was a string
+        //    I think evaluate handles strings not validate...
     }
 
     @Override
@@ -69,13 +73,18 @@ public class AdditiveExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        Integer lhsValue = (Integer) leftHandSide.evaluate();
-        Integer rhsValue = (Integer) rightHandSide.evaluate();
-        //TODO handle string case
-        if (isAdd()) {
-            return lhsValue + rhsValue;
-        } else {
-            return lhsValue - rhsValue;
+        if(CatscriptType.INT.equals(this.getType())){
+            Integer lhsValue = (Integer) leftHandSide.evaluate();
+            Integer rhsValue = (Integer) rightHandSide.evaluate();
+            if (isAdd()) {
+                return lhsValue + rhsValue;
+            } else {
+                return lhsValue - rhsValue;
+            }
+        }else{
+            Object lhsValue = leftHandSide.evaluate();
+            Object rhsValue = rightHandSide.evaluate();
+            return String.valueOf(lhsValue) + String.valueOf(rhsValue);
         }
     }
 

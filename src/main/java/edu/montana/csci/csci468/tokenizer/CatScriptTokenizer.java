@@ -55,6 +55,9 @@ public class CatScriptTokenizer {
                     char e = src.charAt(postion);
                     String sS = Character.toString(s);
                     String sE = Character.toString(e);
+                    if(sS.equals(" ")){
+                        return false;
+                    }
                     if(s == e){
                         start += 1;
                         tokenList.addToken(STRING, src.substring(start, postion), start, postion, line, lineOffset);

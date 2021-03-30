@@ -604,15 +604,9 @@ public class CatScriptParser {
         } else if(tokens.match(LEFT_PAREN)){
             Token start = tokens.consumeToken();
             Expression expression = parseExpression();
-            boolean rightParen = tokens.match(RIGHT_PAREN);
-            if(rightParen){
-                ParenthesizedExpression parenthesizedExpression = new ParenthesizedExpression(expression);
-                return parenthesizedExpression;
-            }else{
-                ParenthesizedExpression parenthesizedExpression = new ParenthesizedExpression(expression);
-                parenthesizedExpression.addError(ErrorType.UNEXPECTED_TOKEN);
-                return parenthesizedExpression;
-            }
+            ParenthesizedExpression parenthesizedExpression = new ParenthesizedExpression(expression);
+            require(RIGHT_PAREN, parenthesizedExpression);
+            return parenthesizedExpression;
         } else {
             SyntaxErrorExpression syntaxErrorExpression = new SyntaxErrorExpression();
             syntaxErrorExpression.setToken(tokens.consumeToken());

@@ -71,7 +71,33 @@ public class ComparisonExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        return super.evaluate(runtime);
+        Integer lhsValue = (Integer) leftHandSide.evaluate();
+        Integer rhsValue = (Integer) rightHandSide.evaluate();
+        if(operator.getStringValue().equals(">")){
+            if(lhsValue > rhsValue){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(operator.getStringValue().equals(">=")){
+            if(lhsValue >= rhsValue){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(operator.getStringValue().equals("<")){
+            if(lhsValue < rhsValue){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(lhsValue <= rhsValue){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     @Override
