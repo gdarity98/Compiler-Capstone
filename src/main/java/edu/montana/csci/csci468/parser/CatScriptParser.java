@@ -536,6 +536,7 @@ public class CatScriptParser {
                 Token start = tokens.consumeToken();
                 List<Expression> argumentList = new ArrayList<>();
                 if(tokens.match(RIGHT_PAREN)){
+                    Token closing_paren = tokens.consumeToken();
                     FunctionCallExpression functionCallExpression = new FunctionCallExpression(identifierToken.getStringValue(), argumentList);
                     return functionCallExpression;
                 }else{
