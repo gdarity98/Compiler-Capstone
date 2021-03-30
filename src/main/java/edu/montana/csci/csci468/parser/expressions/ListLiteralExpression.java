@@ -36,7 +36,8 @@ public class ListLiteralExpression extends Expression {
             // I think I did it?
             type = CatscriptType.getListType(values.get(0).getType());
             for(int i = 0; i< values.size();i++){
-                if(type != CatscriptType.getListType(values.get(i).getType())){
+                CatscriptType listType = CatscriptType.getListType(values.get(i).getType());
+                if(!type.toString().equals(listType.toString())){
                     type = CatscriptType.getListType(CatscriptType.OBJECT);
                     break;
                 }

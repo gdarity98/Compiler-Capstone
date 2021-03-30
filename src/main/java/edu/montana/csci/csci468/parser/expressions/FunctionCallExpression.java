@@ -53,6 +53,7 @@ public class FunctionCallExpression extends Expression {
                     Expression argument = arguments.get(i);
                     argument.validate(symbolTable);
                     CatscriptType parameterType = function.getParameterType(i);
+                    CatscriptType argType = argument.getType();
                     if (!parameterType.isAssignableFrom(argument.getType())) {
                         argument.addError(ErrorType.INCOMPATIBLE_TYPES);
                     }

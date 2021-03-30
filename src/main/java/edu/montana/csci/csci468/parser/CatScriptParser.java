@@ -324,33 +324,40 @@ public class CatScriptParser {
                         functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
                     }else if(tokens.getCurrentToken().getStringValue().equals("list")){
                         tokens.consumeToken();
-                        require(LESS, functionDefinitionStatement);
-                        int count = 1;
-                        while(tokens.getCurrentToken().getStringValue().equals("list")){
-                            tokens.consumeToken();
+                        int count = 0;
+                        if(tokens.match(LESS)){
                             require(LESS, functionDefinitionStatement);
-                            count = count + 1;
-                        }
-
-                        if(tokens.getCurrentToken().getStringValue().equals("int")){
-                            tokens.consumeToken();
-                            typeLiteral.setType(CatscriptType.INT);
+                            count = 1;
+                            while(tokens.getCurrentToken().getStringValue().equals("list")){
+                                tokens.consumeToken();
+                                require(LESS, functionDefinitionStatement);
+                                count = count + 1;
+                            }
+                            if(tokens.getCurrentToken().getStringValue().equals("int")){
+                                tokens.consumeToken();
+                                typeLiteral.setType(CatscriptType.getListType(CatscriptType.INT));
+                                functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
+                            }else if(tokens.getCurrentToken().getStringValue().equals("string")){
+                                tokens.consumeToken();
+                                typeLiteral.setType(CatscriptType.getListType(CatscriptType.STRING));
+                                functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
+                            }else if(tokens.getCurrentToken().getStringValue().equals("bool")){
+                                tokens.consumeToken();
+                                typeLiteral.setType(CatscriptType.getListType(CatscriptType.BOOLEAN));
+                                functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
+                            }else if(tokens.getCurrentToken().getStringValue().equals("object")){
+                                tokens.consumeToken();
+                                typeLiteral.setType(CatscriptType.getListType(CatscriptType.OBJECT));
+                                functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
+                            }
+                            if(count != 0){
+                                for(int k = 0; k < count; k++){
+                                    require(GREATER, functionDefinitionStatement);
+                                }
+                            }
+                        }else{
+                            typeLiteral.setType(CatscriptType.getListType(CatscriptType.OBJECT));
                             functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
-                        }else if(tokens.getCurrentToken().getStringValue().equals("string")){
-                            tokens.consumeToken();
-                            typeLiteral.setType(CatscriptType.STRING);
-                            functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
-                        }else if(tokens.getCurrentToken().getStringValue().equals("bool")){
-                            tokens.consumeToken();
-                            typeLiteral.setType(CatscriptType.BOOLEAN);
-                            functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
-                        }else if(tokens.getCurrentToken().getStringValue().equals("object")){
-                            tokens.consumeToken();
-                            typeLiteral.setType(CatscriptType.OBJECT);
-                            functionDefinitionStatement.addParameter(name.getStringValue(), typeLiteral);
-                        }
-                        for(int k = 0; k < count; k++){
-                            require(GREATER, functionDefinitionStatement);
                         }
                     }
                 }else{
