@@ -70,6 +70,13 @@ public class IfStatement extends Statement {
     //==============================================================
     @Override
     public void execute(CatscriptRuntime runtime) {
+        Object x = expression.evaluate();
+        // runtime.setValue();
+//        if(){
+//            do something
+//        }else{
+//            do something else
+//        }
         super.execute(runtime);
     }
 

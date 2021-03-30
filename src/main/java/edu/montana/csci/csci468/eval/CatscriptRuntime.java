@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 // TODO - implement proper scoping
+// Done?
 public class CatscriptRuntime {
     LinkedList<Map<String, Object>> scopes = new LinkedList<>();
     HashMap<String, Object> globalScope;
@@ -22,9 +23,12 @@ public class CatscriptRuntime {
     }
 
     public void pushScope() {
+        HashMap<String, Object> scope = new HashMap<>();
+        scopes.push(scope);
     }
 
     public void popScope() {
+        scopes.pop();
     }
 
 }

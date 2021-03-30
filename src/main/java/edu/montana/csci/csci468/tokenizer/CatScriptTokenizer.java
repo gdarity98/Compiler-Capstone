@@ -73,7 +73,8 @@ public class CatScriptTokenizer {
                     String sE = Character.toString(e);
                     if(!sE.equals("\"") && !sS.equals("\"")){
                         postion = start;
-                        scanIdentifier();
+                        return true;
+                        // scanIdentifier();
                     }else{
                         tokenList.addToken(ERROR, "<No String Close>", start, postion, line, lineOffset);
                     }

@@ -6,6 +6,11 @@ import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
+import edu.montana.csci.csci468.parser.statements.CatScriptProgram;
+import edu.montana.csci.csci468.parser.statements.Statement;
+import edu.montana.csci.csci468.parser.statements.VariableStatement;
+
+import java.util.List;
 
 public class IdentifierExpression extends Expression {
     private final String name;
@@ -40,7 +45,7 @@ public class IdentifierExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        return super.evaluate(runtime);
+        return name;
     }
 
     @Override

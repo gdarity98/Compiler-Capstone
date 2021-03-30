@@ -27,7 +27,9 @@ public class PrintStatement extends Statement {
     //==============================================================
     @Override
     public void execute(CatscriptRuntime runtime) {
-        getProgram().print(expression.evaluate());
+        Object evaluate = expression.evaluate();
+        Object val = runtime.getValue((String) evaluate);
+        getProgram().print(val);
     }
 
     @Override
