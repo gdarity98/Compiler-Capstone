@@ -234,6 +234,7 @@ public class CatScriptParser {
             }
             require(EQUAL, variableStatement);
             variableStatement.setExpression(parseExpression());
+            // variableStatement.setExplicitType(variableStatement.getExpression().getType());
             return variableStatement;
         }else{
             return null;
@@ -620,7 +621,7 @@ public class CatScriptParser {
     }
 
     /*
-    Need to add TypeExpression
+    Need to add TypeExpression?
      */
 
     //============================================================
