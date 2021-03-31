@@ -29,6 +29,8 @@ public class ReturnStatement extends Statement {
     public void validate(SymbolTable symbolTable) {
         if (expression != null) {
             expression.validate(symbolTable);
+            CatscriptType funType = function.getType();
+            CatscriptType expType = expression.getType();
             if (!function.getType().isAssignableFrom(expression.getType())) {
                 expression.addError(ErrorType.INCOMPATIBLE_TYPES);
             }

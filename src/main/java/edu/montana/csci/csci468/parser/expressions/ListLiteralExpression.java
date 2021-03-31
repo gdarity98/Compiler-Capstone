@@ -32,7 +32,6 @@ public class ListLiteralExpression extends Expression {
             value.validate(symbolTable);
         }
         if (values.size() > 0) {
-            // TODO - generalize this looking at all objects in list
             // I think I did it?
             type = CatscriptType.getListType(values.get(0).getType());
             for(int i = 0; i< values.size();i++){
