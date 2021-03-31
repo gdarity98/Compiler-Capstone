@@ -19,6 +19,9 @@ public class CatscriptRuntime {
     }
 
     public void setValue(String variableName, Object val) {
+        if(String.valueOf(val).equals("null")){
+            val = "null";
+        }
         globalScope.put(variableName, val);
     }
 

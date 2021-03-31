@@ -557,6 +557,7 @@ public class CatScriptParser {
                 }
                 boolean rightParen = tokens.match(RIGHT_PAREN);
                 if(rightParen){
+                    Token closing_paren = tokens.consumeToken();
                     FunctionCallExpression functionCallExpression = new FunctionCallExpression(identifierToken.getStringValue(), argumentList);
                     return functionCallExpression;
                 }else{
