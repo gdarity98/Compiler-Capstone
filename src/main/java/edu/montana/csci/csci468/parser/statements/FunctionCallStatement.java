@@ -37,7 +37,7 @@ public class FunctionCallStatement extends Statement {
         List<Expression> args = getArguments();
         List<Object> arguments = new LinkedList<>();
         for (int i = 0; i < args.size(); i++) {
-            Object arg = args.get(i).evaluate();
+            Object arg = args.get(i).evaluate(runtime);
             arguments.add(arg);
             String name = function.getParameterName(i);
             runtime.setValue(name, arg);
