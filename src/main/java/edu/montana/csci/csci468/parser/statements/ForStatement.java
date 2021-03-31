@@ -83,7 +83,6 @@ public class ForStatement extends Statement {
                 statement.execute(runtime);
             }
         }
-        super.execute(runtime);
     }
 
     @Override
