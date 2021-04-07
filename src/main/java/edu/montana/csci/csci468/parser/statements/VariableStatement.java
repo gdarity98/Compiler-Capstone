@@ -50,7 +50,9 @@ public class VariableStatement extends Statement {
         } else {
             // Done
             if(explicitType != null){
-                if(expression.getType() != explicitType){
+                CatscriptType type = expression.getType();
+                boolean x = expression.getType().isAssignableFrom(explicitType);
+                if(!explicitType.isAssignableFrom(expression.getType())){
                     addError(ErrorType.INCOMPATIBLE_TYPES);
                 }else{
                     type = explicitType;
