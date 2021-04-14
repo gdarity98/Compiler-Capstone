@@ -6,6 +6,7 @@ import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
+import edu.montana.csci.csci468.parser.statements.CatScriptProgram;
 import edu.montana.csci.csci468.tokenizer.Token;
 import edu.montana.csci.csci468.tokenizer.TokenType;
 
@@ -80,7 +81,10 @@ public class UnaryExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        CatScriptProgram program = getProgram();
+        Expression expression = program.getExpression();
+        Object evaluate = expression.evaluate();
+        code.pushConstantOntoStack(evaluate);
     }
 
 
