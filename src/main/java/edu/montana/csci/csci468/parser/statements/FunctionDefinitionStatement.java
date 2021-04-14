@@ -5,6 +5,7 @@ import edu.montana.csci.csci468.eval.CatscriptRuntime;
 import edu.montana.csci.csci468.eval.ReturnException;
 import edu.montana.csci.csci468.parser.*;
 import edu.montana.csci.csci468.parser.expressions.TypeLiteral;
+import org.objectweb.asm.Opcodes;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -96,6 +97,7 @@ public class FunctionDefinitionStatement extends Statement {
 
     private boolean validateReturnCoverage(List<Statement> statements) {
         // TODO - implement return coverage checking
+        // Oop have not done this yet and need to
         return true;
     }
 
@@ -153,6 +155,8 @@ public class FunctionDefinitionStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        code.pushMethod(Opcodes.ACC_PUBLIC, getName(), getDescriptor());
+        //some stuff ...
+        code.popMethod();
     }
 }

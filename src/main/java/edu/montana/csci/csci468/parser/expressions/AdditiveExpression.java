@@ -109,6 +109,7 @@ public class AdditiveExpression extends Expression {
                 code.addInstruction(Opcodes.ISUB);
             }
         }else{
+            //I'm not too sure
             // code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class), "something", "Something");
         }
     }
