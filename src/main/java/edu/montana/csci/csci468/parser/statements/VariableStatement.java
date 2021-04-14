@@ -7,6 +7,7 @@ import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.expressions.Expression;
+import org.objectweb.asm.Opcodes;
 
 public class VariableStatement extends Statement {
     private Expression expression;
@@ -92,9 +93,22 @@ public class VariableStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
+        // make sure to do an ALOAD 0?
         if(isGlobal()){
+            // descriptor I for integer/boolean
             //store in a field
+            if(type.equals(CatscriptType.INT) || type.equals(CatscriptType.BOOLEAN)){
+                code.addField(getVariableName(), "I");
+                code.addFieldInstruction(Opcodes.PUTFIELD, getVariableName(),"I", code.getProgramInternalName());
+            }
         }else{
+            //need to test if it is not integer or boolean
+            Integer slotForVar = code.createLocalStorageSlotFor(getVariableName());
+            if(type.equals(CatscriptType.INT) || type.equals(CatscriptType.BOOLEAN)){
+                code.addVarInstruction(Opcodes.ISTORE, slotForVar);
+            }else{
+                code.addVarInstruction(Opcodes.ASTORE, slotForVar);
+            }
             //store in a slot
         }
     }

@@ -5,8 +5,8 @@ public class Scratch {
     public void main(){
 
         var x = 10;
-        var y = 20;
-        var z = x / y;
+        var y = "a";
+        var z = x + y;
 
     }
 

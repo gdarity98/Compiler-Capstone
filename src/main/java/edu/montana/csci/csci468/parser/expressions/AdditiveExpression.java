@@ -11,6 +11,7 @@ import edu.montana.csci.csci468.tokenizer.Token;
 import edu.montana.csci.csci468.tokenizer.TokenType;
 import org.objectweb.asm.Opcodes;
 
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
 import static edu.montana.csci.csci468.tokenizer.TokenType.MINUS;
 import static edu.montana.csci.csci468.tokenizer.TokenType.PLUS;
 
@@ -101,10 +102,14 @@ public class AdditiveExpression extends Expression {
     public void compile(ByteCodeGenerator code) {
         getLeftHandSide().compile(code);
         getRightHandSide().compile(code);
-        if (isAdd()) {
-            code.addInstruction(Opcodes.IADD);
-        } else {
-            code.addInstruction(Opcodes.ISUB);
+        if(CatscriptType.INT.equals(this.getType())){
+            if (isAdd()) {
+                code.addInstruction(Opcodes.IADD);
+            } else {
+                code.addInstruction(Opcodes.ISUB);
+            }
+        }else{
+            // code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class), "something", "Something");
         }
     }
 

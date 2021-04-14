@@ -9,6 +9,7 @@ import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.statements.CatScriptProgram;
 import edu.montana.csci.csci468.parser.statements.Statement;
 import edu.montana.csci.csci468.parser.statements.VariableStatement;
+import org.objectweb.asm.Opcodes;
 
 import java.util.List;
 
@@ -55,7 +56,14 @@ public class IdentifierExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        Integer integer = code.resolveLocalStorageSlotFor(getName());
+        if(integer != null){
+            // look up the slot
+            code.addVarInstruction(Opcodes.ILOAD, integer);
+        }else{
+            // look up the field
+            // code.addFieldInstruction(Opcodes.GETFIELD, getName(), "something", code.getProgramInternalName());
+        }
     }
 
 
