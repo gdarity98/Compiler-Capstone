@@ -1,12 +1,12 @@
 package edu.montana.csci.csci468.bytecode;
 
+import java.util.LinkedList;
+
 public class Scratch {
 
     public void main(){
 
-        var x = 10;
-        var y = "a";
-        var z = x + y;
+        String y = String.valueOf(1).concat(String.valueOf("bar"));
 
     }
 

@@ -85,7 +85,6 @@ public class ListLiteralExpression extends Expression {
             code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(LinkedList.class), "add", "(Ljava/lang/Object;)Z");
             code.addInstruction(Opcodes.POP);
         }
-
     }
 
 

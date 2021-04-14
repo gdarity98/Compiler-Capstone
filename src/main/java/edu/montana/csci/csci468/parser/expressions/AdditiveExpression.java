@@ -100,17 +100,22 @@ public class AdditiveExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        getLeftHandSide().compile(code);
-        getRightHandSide().compile(code);
         if(CatscriptType.INT.equals(this.getType())){
+            getLeftHandSide().compile(code);
+            getRightHandSide().compile(code);
             if (isAdd()) {
                 code.addInstruction(Opcodes.IADD);
             } else {
                 code.addInstruction(Opcodes.ISUB);
             }
         }else{
-            //I'm not too sure
-            // code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class), "something", "Something");
+            getLeftHandSide().compile(code);
+            box(code, leftHandSide.getType());
+            getRightHandSide().compile(code);
+            box(code, rightHandSide.getType());
+            code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(String.class),
+                    "concat", "(Ljava/lang/String;)Ljava/lang/String;");
+            //code.addInstruction(Opcodes.POP);
         }
     }
 
