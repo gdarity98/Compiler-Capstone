@@ -92,6 +92,10 @@ public class VariableStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        if(isGlobal()){
+            //store in a field
+        }else{
+            //store in a slot
+        }
     }
 }

@@ -81,10 +81,18 @@ public class UnaryExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        CatScriptProgram program = getProgram();
-        Expression expression = program.getExpression();
-        Object evaluate = expression.evaluate();
-        code.pushConstantOntoStack(evaluate);
+        if(isMinus()){
+            code.pushConstantOntoStack(-1 * (Integer) rightHandSide.evaluate());
+        }else{
+            if(rightHandSide.evaluate().toString().equals("true")){
+                code.pushConstantOntoStack(false);
+            }else{
+                code.pushConstantOntoStack(true);
+            }
+        }
+
+        // Object evaluate = expression.evaluate();
+        // code.pushConstantOntoStack(evaluate);
     }
 
 
