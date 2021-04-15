@@ -6,12 +6,7 @@ public class Scratch {
 
     public void main(){
 
-        String y = String.valueOf("null").concat(String.valueOf("bar"));
-
-        LinkedList<Object> x = new LinkedList<>();
-        x.add(1);
-        x.add(2);
-        x.add(3);
+        var x = 1 > 2;
 
     }
 
