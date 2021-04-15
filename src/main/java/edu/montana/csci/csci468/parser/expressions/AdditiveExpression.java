@@ -109,13 +109,35 @@ public class AdditiveExpression extends Expression {
                 code.addInstruction(Opcodes.ISUB);
             }
         }else{
-            getLeftHandSide().compile(code);
-            box(code, leftHandSide.getType());
-            getRightHandSide().compile(code);
-            box(code, rightHandSide.getType());
+            CatscriptType rhsType = rightHandSide.getType();
+            CatscriptType lhsType = leftHandSide.getType();
+            //Left hand side
+            if(lhsType.equals(CatscriptType.STRING)){
+                getLeftHandSide().compile(code);
+                box(code, leftHandSide.getType());
+            }else if(!lhsType.equals(CatscriptType.NULL)){
+                getLeftHandSide().compile(code);
+                code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
+                        "valueOf", "(I)Ljava/lang/String;");
+            }else{
+                getLeftHandSide().compile(code);
+                box(code, CatscriptType.STRING);
+            }
+            //Right hand side
+            if(rhsType.equals(CatscriptType.STRING)){
+                getRightHandSide().compile(code);
+                box(code, rightHandSide.getType());
+            }else if(!rhsType.equals(CatscriptType.NULL)){
+                getRightHandSide().compile(code);
+                code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
+                        "valueOf", "(I)Ljava/lang/String;");
+            }else{
+                getRightHandSide().compile(code);
+                box(code, CatscriptType.STRING);
+            }
+
             code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(String.class),
                     "concat", "(Ljava/lang/String;)Ljava/lang/String;");
-            //code.addInstruction(Opcodes.POP);
         }
     }
 
