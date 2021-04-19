@@ -7,7 +7,10 @@ import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.tokenizer.Token;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.Opcodes;
 
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
 import static edu.montana.csci.csci468.tokenizer.TokenType.*;
 
 public class ComparisonExpression extends Expression {
@@ -108,7 +111,34 @@ public class ComparisonExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+
+        getLeftHandSide().compile(code);
+        getRightHandSide().compile(code);
+        Label T = new Label();
+        Label F = new Label();
+        if(operator.getStringValue().equals("<")){
+            code.addJumpInstruction(Opcodes.IF_ICMPGE, F);
+            code.addInstruction(Opcodes.ICONST_1);
+            code.addJumpInstruction(Opcodes.GOTO, T);
+        }else if(operator.getStringValue().equals("<=")){
+            code.addJumpInstruction(Opcodes.IF_ICMPGT, F);
+            code.addInstruction(Opcodes.ICONST_1);
+            code.addJumpInstruction(Opcodes.GOTO, T);
+        }else if(operator.getStringValue().equals(">")){
+            code.addJumpInstruction(Opcodes.IF_ICMPLE, F);
+            code.addInstruction(Opcodes.ICONST_1);
+            code.addJumpInstruction(Opcodes.GOTO, T);
+        }else if(operator.getStringValue().equals(">=")){
+            code.addJumpInstruction(Opcodes.IF_ICMPLT, F);
+            code.addInstruction(Opcodes.ICONST_1);
+            code.addJumpInstruction(Opcodes.GOTO, T);
+        }
+
+        code.addLabel(F);
+        code.addInstruction(Opcodes.ICONST_0);
+        code.addLabel(T);
+        // I didn't need the ASTORE Opcode. It must be done else where I'm not sure.
+
     }
 
 }
