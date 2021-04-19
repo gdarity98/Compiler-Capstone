@@ -6,6 +6,10 @@ import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.tokenizer.Token;
 import edu.montana.csci.csci468.tokenizer.TokenType;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.Opcodes;
+
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
 
 public class EqualityExpression extends Expression {
 
@@ -78,8 +82,35 @@ public class EqualityExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        Label T = new Label();
+        Label F = new Label();
+        String lhsT = String.valueOf(leftHandSide.getType());
+        String rhsT = String.valueOf(rightHandSide.getType());
+
+        if(lhsT.equals(rhsT)){
+            getLeftHandSide().compile(code);
+            getRightHandSide().compile(code);
+            if(lhsT.equals("null")){
+                code.addJumpInstruction(Opcodes.IF_ACMPNE, F);
+                code.addInstruction(Opcodes.ICONST_1);
+                code.addJumpInstruction(Opcodes.GOTO, T);
+            }else{
+                code.addJumpInstruction(Opcodes.IF_ICMPNE, F);
+                code.addInstruction(Opcodes.ICONST_1);
+                code.addJumpInstruction(Opcodes.GOTO, T);
+            }
+            code.addLabel(F);
+            code.addInstruction(Opcodes.ICONST_0);
+            code.addLabel(T);
+        }else{
+            // If the types are different the normal way does not work
+            // so just return false or true based on operator
+            if(operator.getStringValue().equals("==")){
+                code.addInstruction(Opcodes.ICONST_0);
+            }else{
+                code.addInstruction(Opcodes.ICONST_1);
+            }
+        }
+        // ASTORE Command would go here
     }
-
-
 }
