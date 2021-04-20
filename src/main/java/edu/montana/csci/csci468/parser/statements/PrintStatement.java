@@ -5,6 +5,12 @@ import edu.montana.csci.csci468.eval.CatscriptRuntime;
 import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.expressions.Expression;
+import edu.montana.csci.csci468.parser.expressions.IdentifierExpression;
+import org.objectweb.asm.Opcodes;
+
+import java.io.PrintStream;
+
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
 
 public class PrintStatement extends Statement {
     private Expression expression;
@@ -44,7 +50,16 @@ public class PrintStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        code.addVarInstruction(Opcodes.ALOAD, 0);
+        getExpression().compile(code);
+        CatscriptType type = getExpression().getType();
+        Class<? extends Expression> aClass = getExpression().getClass();
+        Class<IdentifierExpression> identifierExpressionClass = IdentifierExpression.class;
+        if(!aClass.equals(identifierExpressionClass)){
+            box(code, type);
+        }
+        code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(CatScriptProgram.class),
+                "print", "(Ljava/lang/Object;)V");
     }
 
 }

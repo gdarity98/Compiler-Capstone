@@ -13,6 +13,8 @@ import org.objectweb.asm.Opcodes;
 
 import java.util.List;
 
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
+
 public class IdentifierExpression extends Expression {
     private final String name;
     private CatscriptType type;
@@ -58,11 +60,12 @@ public class IdentifierExpression extends Expression {
     public void compile(ByteCodeGenerator code) {
         Integer integer = code.resolveLocalStorageSlotFor(getName());
         if(integer != null){
-            // look up the slot
+            // look up the slot and pop it off
             code.addVarInstruction(Opcodes.ILOAD, integer);
         }else{
             // look up the field
-            // code.addFieldInstruction(Opcodes.GETFIELD, getName(), "something", code.getProgramInternalName());
+            code.addVarInstruction(Opcodes.ALOAD, 0);
+            code.addFieldInstruction(Opcodes.GETFIELD, getName(), "L" + internalNameFor(getType().getJavaType()) + ";", code.getProgramInternalName());
         }
     }
 

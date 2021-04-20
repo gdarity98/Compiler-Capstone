@@ -9,6 +9,8 @@ import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.expressions.Expression;
 import org.objectweb.asm.Opcodes;
 
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
+
 public class VariableStatement extends Statement {
     private Expression expression;
     private String variableName;
@@ -95,21 +97,28 @@ public class VariableStatement extends Statement {
     public void compile(ByteCodeGenerator code) {
         // make sure to do an ALOAD 0?
         if(isGlobal()){
-            // descriptor I for integer/boolean
+            code.addVarInstruction(Opcodes.ALOAD, 0);
+            expression.compile(code);
             //store in a field
-            if(type.equals(CatscriptType.INT) || type.equals(CatscriptType.BOOLEAN)){
+            // descriptor I for integer/boolean
+            if(type.equals(CatscriptType.INT)){
                 code.addField(getVariableName(), "I");
                 code.addFieldInstruction(Opcodes.PUTFIELD, getVariableName(),"I", code.getProgramInternalName());
+            }else{
+                //descriptor needs to be different
+                code.addField(getVariableName(), "L" + internalNameFor(getType().getJavaType()) + ";");
+                code.addFieldInstruction(Opcodes.PUTFIELD, getVariableName(),"L" + internalNameFor(getType().getJavaType()) + ";", code.getProgramInternalName());
             }
         }else{
+            //store in a slot
             //need to test if it is not integer or boolean
+            expression.compile(code);
             Integer slotForVar = code.createLocalStorageSlotFor(getVariableName());
             if(type.equals(CatscriptType.INT) || type.equals(CatscriptType.BOOLEAN)){
                 code.addVarInstruction(Opcodes.ISTORE, slotForVar);
             }else{
                 code.addVarInstruction(Opcodes.ASTORE, slotForVar);
             }
-            //store in a slot
         }
     }
 }
