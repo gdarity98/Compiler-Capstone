@@ -58,14 +58,20 @@ public class IdentifierExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
+        code.addVarInstruction(Opcodes.ALOAD, 0);
         Integer integer = code.resolveLocalStorageSlotFor(getName());
         if(integer != null){
             // look up the slot and pop it off
             code.addVarInstruction(Opcodes.ILOAD, integer);
         }else{
             // look up the field
-            code.addVarInstruction(Opcodes.ALOAD, 0);
-            code.addFieldInstruction(Opcodes.GETFIELD, getName(), "L" + internalNameFor(getType().getJavaType()) + ";", code.getProgramInternalName());
+            if(type.equals(CatscriptType.INT)){
+                code.addFieldInstruction(Opcodes.GETFIELD, getName(), "I", code.getProgramInternalName());
+                //box(code,type);
+            }else{
+                code.addFieldInstruction(Opcodes.GETFIELD, getName(), "L" + internalNameFor(getType().getJavaType()) + ";", code.getProgramInternalName());
+                unbox(code,type);
+            }
         }
     }
 

@@ -53,11 +53,7 @@ public class PrintStatement extends Statement {
         code.addVarInstruction(Opcodes.ALOAD, 0);
         getExpression().compile(code);
         CatscriptType type = getExpression().getType();
-        Class<? extends Expression> aClass = getExpression().getClass();
-        Class<IdentifierExpression> identifierExpressionClass = IdentifierExpression.class;
-        if(!aClass.equals(identifierExpressionClass)){
-            box(code, type);
-        }
+        box(code, type);
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(CatScriptProgram.class),
                 "print", "(Ljava/lang/Object;)V");
     }

@@ -102,6 +102,7 @@ public class VariableStatement extends Statement {
             //store in a field
             // descriptor I for integer/boolean
             if(type.equals(CatscriptType.INT)){
+                String varName = getVariableName();
                 code.addField(getVariableName(), "I");
                 code.addFieldInstruction(Opcodes.PUTFIELD, getVariableName(),"I", code.getProgramInternalName());
             }else{
