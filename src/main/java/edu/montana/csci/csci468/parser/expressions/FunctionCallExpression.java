@@ -83,8 +83,9 @@ public class FunctionCallExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        for(Expression arg : arguments){
+            arg.compile(code);
+            box(code, arg.getType());
+        }
     }
-
-
 }
