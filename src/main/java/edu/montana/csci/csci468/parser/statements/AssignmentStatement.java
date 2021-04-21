@@ -7,6 +7,9 @@ import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.expressions.Expression;
+import org.objectweb.asm.Opcodes;
+
+import static edu.montana.csci.csci468.bytecode.ByteCodeGenerator.internalNameFor;
 
 public class AssignmentStatement extends Statement {
     private Expression expression;
@@ -46,7 +49,7 @@ public class AssignmentStatement extends Statement {
     //==============================================================
     @Override
     public void execute(CatscriptRuntime runtime) {
-        super.execute(runtime);
+        runtime.setValue(variableName, expression.evaluate());
     }
 
     @Override
@@ -56,6 +59,22 @@ public class AssignmentStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        Integer integer = code.resolveLocalStorageSlotFor(variableName);
+        if(integer != null){
+            // look up the slot and pop it off
+            expression.compile(code);
+            code.addVarInstruction(Opcodes.ISTORE, integer);
+        }else{
+            code.addVarInstruction(Opcodes.ALOAD, 0);
+            expression.compile(code);
+            // look up the field
+            if(expression.getType().equals(CatscriptType.INT)){
+                code.addFieldInstruction(Opcodes.PUTFIELD, variableName, "I", code.getProgramInternalName());
+                //box(code,type);
+            }else{
+                code.addFieldInstruction(Opcodes.PUTFIELD, variableName, "L" + internalNameFor(expression.getType().getJavaType()) + ";", code.getProgramInternalName());
+                unbox(code,expression.getType());
+            }
+        }
     }
 }

@@ -95,7 +95,7 @@ public class VariableStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        // make sure to do an ALOAD 0?
+        // make sure to do an ALOAD 0 for global
         if(isGlobal()){
             code.addVarInstruction(Opcodes.ALOAD, 0);
             expression.compile(code);
