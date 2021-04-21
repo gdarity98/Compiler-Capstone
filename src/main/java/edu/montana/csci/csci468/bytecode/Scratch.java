@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class Scratch {
     public void main(String[] args){
-       int x = intFunc(10);
+       intFunc(10);
     }
-    public int intFunc(int i1) {
-        return i1;
+    public void intFunc(int i1) {
+        System.out.println(i1);
     }
 }

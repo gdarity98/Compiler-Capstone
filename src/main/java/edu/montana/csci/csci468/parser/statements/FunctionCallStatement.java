@@ -61,10 +61,10 @@ public class FunctionCallStatement extends Statement {
         //this pushes the arguments
         expression.compile(code);
         //This invokes the function
-        //Args and return?
-        //Not sure if this method instruction is right
         String descriptor = getProgram().getFunction(getName()).getDescriptor();
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(expression.getClass()), getName(), descriptor);
+        //need to pop if return type is not void?
+        // code.addInstruction(Opcodes.POP);
         //INVOKEVIRTUAL edu/montana/csci/csci468/bytecode/Scratch.intFunc (I)V
     }
 }
