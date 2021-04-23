@@ -117,7 +117,7 @@ public class ForStatement extends Statement {
         CatscriptType componentType = getComponentType();
         code.addVarInstruction(Opcodes.ALOAD, iteratorSlot);
         code.addMethodInstruction(Opcodes.INVOKEINTERFACE, internalNameFor(Iterator.class),
-                "next", "()Ljava/lang/Object");
+                "next", "()Ljava/lang/Object;");
         code.addTypeInstruction(Opcodes.CHECKCAST, internalNameFor(componentType.getJavaType()));
         unbox(code, componentType);
 
