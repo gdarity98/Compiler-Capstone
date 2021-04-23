@@ -156,6 +156,7 @@ public class FunctionDefinitionStatement extends Statement {
     @Override
     public void compile(ByteCodeGenerator code) {
         code.pushMethod(Opcodes.ACC_PUBLIC, getName(), getDescriptor());
+        // three different returns
         //some stuff ...
         code.popMethod();
     }

@@ -149,10 +149,10 @@ public abstract class ParseElement {
             code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(Boolean.class),
                     "valueOf", "(Z)Ljava/lang/Boolean;");
         }
-        if(type.equals(CatscriptType.STRING)){
-            code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
-                    "valueOf", "(Ljava/lang/Object;)Ljava/lang/String;");
-        }
+//        if(type.equals(CatscriptType.STRING)){
+//            code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
+//                    "valueOf", "(Ljava/lang/Object;)Ljava/lang/String;");
+//        }
     }
 
     protected void unbox(ByteCodeGenerator code, CatscriptType type) {
@@ -164,10 +164,10 @@ public abstract class ParseElement {
             code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(Boolean.class),
                     "booleanValue", "()Z");
         }
-        if(type.equals(CatscriptType.STRING)){
-            code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
-                    "stringValue", "()Ljava/lang/String;");
-        }
+//        if(type.equals(CatscriptType.STRING)){
+//            code.addMethodInstruction(Opcodes.INVOKESTATIC, internalNameFor(String.class),
+//                    "stringValue", "()Ljava/lang/String;");
+//        }
     }
 
 
