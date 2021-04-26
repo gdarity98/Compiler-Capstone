@@ -60,7 +60,6 @@ public class FunctionCallStatement extends Statement {
         code.addVarInstruction(Opcodes.ALOAD,0);
         //this pushes the arguments
         expression.compile(code);
-        //expression.compile(code);
 
         //This invokes the function
         // Is this descriptor correct?

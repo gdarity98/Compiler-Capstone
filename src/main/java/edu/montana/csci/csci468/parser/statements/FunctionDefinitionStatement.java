@@ -155,6 +155,8 @@ public class FunctionDefinitionStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
+        String descritor = getDescriptor();
+        String name = getName();
         code.pushMethod(Opcodes.ACC_PUBLIC, getName(), getDescriptor());
         for(Statement statement : body){
             statement.compile(code);
