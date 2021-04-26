@@ -86,7 +86,9 @@ public class FunctionCallExpression extends Expression {
     public void compile(ByteCodeGenerator code) {
         for(Expression arg : arguments){
             arg.compile(code);
-            box(code, arg.getType());
+            if(arg.getType().equals(CatscriptType.OBJECT)){
+                box(code, arg.getType());
+            }
         }
     }
 }

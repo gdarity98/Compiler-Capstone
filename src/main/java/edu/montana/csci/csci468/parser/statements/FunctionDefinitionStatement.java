@@ -156,8 +156,16 @@ public class FunctionDefinitionStatement extends Statement {
     @Override
     public void compile(ByteCodeGenerator code) {
         code.pushMethod(Opcodes.ACC_PUBLIC, getName(), getDescriptor());
+        for(Statement statement : body){
+            statement.compile(code);
+        }
         // three different returns
-        //some stuff ...
-        code.popMethod();
+        if(type.equals(CatscriptType.VOID)){
+            code.addInstruction(Opcodes.RETURN);
+        }else if(type.equals(CatscriptType.INT)){
+            code.addInstruction(Opcodes.IRETURN);
+        }else{
+            code.addInstruction(Opcodes.ARETURN);
+        }
     }
 }

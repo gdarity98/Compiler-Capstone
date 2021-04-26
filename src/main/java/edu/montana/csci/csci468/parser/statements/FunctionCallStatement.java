@@ -56,15 +56,24 @@ public class FunctionCallStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        //this pointer
+        //this pointer (Do I need to do this twice?)
         code.addVarInstruction(Opcodes.ALOAD,0);
         //this pushes the arguments
         expression.compile(code);
+        //expression.compile(code);
+
         //This invokes the function
+        // Is this descriptor correct?
         String descriptor = getProgram().getFunction(getName()).getDescriptor();
+        String name = getName();
+        String intName = internalNameFor(expression.getClass());
+        // in Scratch is shows the descriptor should be (I)V... but descriptor gives something else??
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(expression.getClass()), getName(), descriptor);
-        //need to pop if return type is not void?
-        // code.addInstruction(Opcodes.POP);
-        //INVOKEVIRTUAL edu/montana/csci/csci468/bytecode/Scratch.intFunc (I)V
+        //need to pop if return type is not void
+        CatscriptType type = expression.getType();
+        Boolean isVoid = type.equals(CatscriptType.VOID);
+        if(!isVoid) {
+            code.addInstruction(Opcodes.POP);
+        }
     }
 }

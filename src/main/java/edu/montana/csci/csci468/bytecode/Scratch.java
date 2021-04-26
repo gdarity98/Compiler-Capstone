@@ -3,12 +3,13 @@ package edu.montana.csci.csci468.bytecode;
 import java.util.LinkedList;
 
 public class Scratch {
-    int x;
     public void main(String[] args){
-       x = 10;
-       System.out.println(x);
+       intFunc(1);
+       intFunc(2);
+       intFunc(3);
     }
-    public void intFunc(int i1) {
+    public int intFunc(int i1) {
         System.out.println(i1);
+        return i1;
     }
 }
