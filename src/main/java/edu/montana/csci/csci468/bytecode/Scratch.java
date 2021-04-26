@@ -8,8 +8,8 @@ public class Scratch {
        intFunc(2);
        intFunc(3);
     }
-    public int intFunc(int i1) {
+    public void intFunc(int i1) {
         System.out.println(i1);
-        return i1;
+        //return i1;
     }
 }

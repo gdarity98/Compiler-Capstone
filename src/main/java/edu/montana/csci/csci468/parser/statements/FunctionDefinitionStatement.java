@@ -169,6 +169,7 @@ public class FunctionDefinitionStatement extends Statement {
         for(Statement statement : body){
             statement.compile(code);
         }
+
         // three different returns
         if(type.equals(CatscriptType.VOID)){
             code.addInstruction(Opcodes.RETURN);
@@ -177,5 +178,7 @@ public class FunctionDefinitionStatement extends Statement {
         }else{
             code.addInstruction(Opcodes.ARETURN);
         }
+
+        code.popMethod();
     }
 }

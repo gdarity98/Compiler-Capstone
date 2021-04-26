@@ -93,16 +93,12 @@ public class FunctionCallExpression extends Expression {
             if(!arguments.get(i).getType().equals(CatscriptType.OBJECT)){
                 box(code,arguments.get(i).getType());
             }
-            // need to store the args into the parameter slot created... idk how
+            // need to store the args into the parameter slot created
             FunctionDefinitionStatement function = getProgram().getFunction(getName());
             String parameterName = function.getParameterName(i);
             Integer parSlot = code.resolveLocalStorageSlotFor(parameterName);
-//            if(type.equals(CatscriptType.INT)){
-//                code.addVarInstruction(Opcodes.ISTORE, parSlot);
-//            }else{
             //Just using ASTORE because I'm boxing everything?
             code.addVarInstruction(Opcodes.ASTORE, parSlot);
-            //}
         }
     }
 }

@@ -65,14 +65,14 @@ public class FunctionCallStatement extends Statement {
         // Is this descriptor correct?
         String descriptor = getProgram().getFunction(getName()).getDescriptor();
         String name = getName();
-        String intName = internalNameFor(expression.getClass());
+        String internalName = internalNameFor(expression.getClass());
         // in Scratch is shows the descriptor should be (I)V... but descriptor gives something else??
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(expression.getClass()), getName(), descriptor);
         //need to pop if return type is not void
         CatscriptType type = expression.getType();
         Boolean isVoid = type.equals(CatscriptType.VOID);
         if(!isVoid) {
-            code.addInstruction(Opcodes.POP);
+            code.popMethod();
         }
     }
 }
