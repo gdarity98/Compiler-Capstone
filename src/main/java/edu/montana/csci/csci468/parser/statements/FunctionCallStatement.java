@@ -56,7 +56,7 @@ public class FunctionCallStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        //this pointer (Do I need to do this twice?)
+        //this pointer
         code.addVarInstruction(Opcodes.ALOAD,0);
         //this pushes the arguments
         expression.compile(code);

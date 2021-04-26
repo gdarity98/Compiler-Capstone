@@ -158,6 +158,14 @@ public class FunctionDefinitionStatement extends Statement {
         String descritor = getDescriptor();
         String name = getName();
         code.pushMethod(Opcodes.ACC_PUBLIC, getName(), getDescriptor());
+
+        // Do I need to do this? Am I doing it right
+        // creating slots for parameters
+        for(int i = 0; i < argumentNames.size(); i++){
+            String argName = argumentNames.get(i);
+            Integer slotForPar = code.createLocalStorageSlotFor(argName);
+        }
+
         for(Statement statement : body){
             statement.compile(code);
         }
