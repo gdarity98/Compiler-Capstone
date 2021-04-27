@@ -118,7 +118,6 @@ public class CatScriptTokenizer {
     }
 
     private void scanSyntax() {
-        // TODO - implement comments
         int start = postion;
         if(matchAndConsume('+')) {
             tokenList.addToken(PLUS, "+", start, postion, line, lineOffset);
