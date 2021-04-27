@@ -61,7 +61,11 @@ public class IdentifierExpression extends Expression {
         Integer integer = code.resolveLocalStorageSlotFor(getName());
         if(integer != null){
             // look up the slot and pop it off
-            code.addVarInstruction(Opcodes.ILOAD, integer);
+            if(type.equals(CatscriptType.INT)){
+                code.addVarInstruction(Opcodes.ILOAD, integer);
+            }else{
+                code.addVarInstruction(Opcodes.ALOAD, integer);
+            }
         }else{
             code.addVarInstruction(Opcodes.ALOAD, 0);
             // look up the field

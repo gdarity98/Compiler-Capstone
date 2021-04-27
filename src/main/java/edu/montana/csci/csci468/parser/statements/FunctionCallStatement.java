@@ -61,12 +61,18 @@ public class FunctionCallStatement extends Statement {
         //this pushes the arguments
         expression.compile(code);
 
+        // storing all the arguments I dont know if this is needed since they were put on the stack idk
+//        for(int i = 1; i < getArguments().size()+1; i++){
+//            code.addVarInstruction(Opcodes.ASTORE, i);
+//        }
+
         //This invokes the function
         // Is this descriptor correct?
         String descriptor = getProgram().getFunction(getName()).getDescriptor();
         String name = getName();
         String internalName = internalNameFor(expression.getClass());
         // in Scratch is shows the descriptor should be (I)V... but descriptor gives something else??
+
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(expression.getClass()), getName(), descriptor);
         //need to pop if return type is not void
         CatscriptType type = expression.getType();

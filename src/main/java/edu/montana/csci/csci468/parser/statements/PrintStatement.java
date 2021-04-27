@@ -51,7 +51,8 @@ public class PrintStatement extends Statement {
     @Override
     public void compile(ByteCodeGenerator code) {
         code.addVarInstruction(Opcodes.ALOAD, 0);
-        getExpression().compile(code);
+        Expression expression = getExpression();
+        expression.compile(code);
         CatscriptType type = getExpression().getType();
         box(code, type);
         code.addMethodInstruction(Opcodes.INVOKEVIRTUAL, internalNameFor(CatScriptProgram.class),

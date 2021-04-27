@@ -85,7 +85,8 @@ public class FunctionCallExpression extends Expression {
     @Override
     public void compile(ByteCodeGenerator code) {
         // Not sure if I need to ALOAD
-        code.addVarInstruction(Opcodes.ALOAD, 0);
+        // code.addVarInstruction(Opcodes.ALOAD, 0);
+        FunctionDefinitionStatement function = getProgram().getFunction(name);
         for(int i = 0; i < arguments.size(); i++){
             arguments.get(i).compile(code);
             CatscriptType type =   arguments.get(i).getType();
@@ -93,12 +94,6 @@ public class FunctionCallExpression extends Expression {
             if(!arguments.get(i).getType().equals(CatscriptType.OBJECT)){
                 box(code,arguments.get(i).getType());
             }
-            // need to store the args into the parameter slot created
-            FunctionDefinitionStatement function = getProgram().getFunction(getName());
-            String parameterName = function.getParameterName(i);
-            Integer parSlot = code.resolveLocalStorageSlotFor(parameterName);
-            //Just using ASTORE because I'm boxing everything?
-            code.addVarInstruction(Opcodes.ASTORE, parSlot);
         }
     }
 }

@@ -166,6 +166,7 @@ public class FunctionDefinitionStatement extends Statement {
             Integer slotForPar = code.createLocalStorageSlotFor(argName);
         }
 
+        // I think the problem is there is nothing being put into x
         for(Statement statement : body){
             statement.compile(code);
         }

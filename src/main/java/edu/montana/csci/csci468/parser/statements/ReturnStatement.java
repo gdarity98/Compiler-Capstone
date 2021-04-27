@@ -60,11 +60,6 @@ public class ReturnStatement extends Statement {
     public void compile(ByteCodeGenerator code) {
         //idk if this is right but It seems kinda right hahahaha
         expression.compile(code);
-        if(expression.getType().equals(CatscriptType.INT)){
-            code.addInstruction(Opcodes.ILOAD);
-        }else{
-            code.addInstruction(Opcodes.ALOAD);
-        }
     }
 
 }
