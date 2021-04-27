@@ -1,5 +1,6 @@
 package edu.montana.csci.csci468.parser;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,9 +31,16 @@ public class CatscriptType {
         }
         return false;
     }
-
+    // Memoize this call
+    static final HashMap<CatscriptType, ListType> CACHE = new HashMap<>();
     public static CatscriptType getListType(CatscriptType type) {
-        return new ListType(type);
+        ListType listType = CACHE.get(type);
+        //some logic here
+        if (listType == null) {
+            listType = new ListType(type);
+            CACHE.put(type, listType);
+        }
+        return listType;
     }
 
     @Override
