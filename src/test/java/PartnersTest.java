@@ -20,22 +20,11 @@ public class PartnersTest extends CatscriptTestBase {
                 "gotcha(9)"));
     }
 
-//    @Test
-//    void testTwo() {
-//        // Tests proper implementation of for loop with if statement inside
-//        assertEquals("5", executeProgram("function yay(x : int) {" +
-//                "var i = 5\n" +
-//                "if (i == (x - 1)) { print(i) }" +
-//                "}\n" +
-//                "yay(4)\n" +
-//                "yay(1)\n" +
-//                "yay(6)"));
-//    }
 
     @Test
     void testTwo() {
         // Tests proper implementation of for loop with if statement inside
-        assertEquals("5", executeProgram("function yay(x : int) {" +
+        assertEquals("5\n", executeProgram("function yay(x : int) {" +
                 "var i = 5\n" +
                 "if (i == (x-1)){" +
                 "  print(i)" +

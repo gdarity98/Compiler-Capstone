@@ -36,6 +36,12 @@ expression section of the for loop. Execute is exactly how it sounds. It execute
 the body at runtime. It is pretty similar to a java for loop in implementation.
 
 ### If Statements
+The if statement contains three private variables. Expression for the initial 
+parentheses. Next is a List of Statements called trueStatements. If the 
+expression evaluates to true then the trueStatements will be evaluated. Otherwise,
+the next private variable comes into play. It is another List of Statements, but this
+contains the falseStatements. These false statements could be more if statements.
+Below is a valid code block for an if statement.
 ```javascript
     if(true){
         print(x)
@@ -45,76 +51,104 @@ the body at runtime. It is pretty similar to a java for loop in implementation.
     var z = 0
     if(x < y){
         z = y - x
+    }else if(y < x){
+        z = x - y
     }
 ```
-Talk about above
+Validation makes sure that the expression evaluates to a Boolean value. It also goes
+through all the true and false Statements and validates them.
 
 ### Print Statements
+The print statement only has one private variable. It is the expression that the 
+statement is to print. Execution of the print statement involves the execution
+of the expression and then calling a printing function to take the output and 
+print it.
 ```javascript
     print(1)
 ```
-Talk about above
+The validate method makes sure that the expression that is to be printed is valid.
 
 ### Variable Statements
+The variable has four private variables. Two of which seem to do the same thing! 
+These are the type and explicitType variables. Type is so that we can 
+keep track of type inference within CatScript. The other two hold the variableName
+and the expression that is attached to the variable. During execution these are used
+to place the variableName and executed expression onto the scope of our program.
 ```javascript
     var x = 3
     var x : int = 3
 ```
-Talk about above
+The validate method checks for duplicated names within the scope. It checks if there
+is an explicit type or if there is an inferred type. If explicit type is not null then
+it verifies that the expression evaluates to the correct type.
 
 ### Assignment Statements
+The assignment statement has the private variables that contain the expression to be
+assigned and the name of the variable to be assigned to. 
 ```javascript
     var x = 0
     x = 10
 ```
-Talk about above
-
+The validate function makes sure that there is a variable of the name within the scope.
+It then checks and makes sure that the expression is of a compatible type.
 
 ### Return Statements
+The return statement contains the function definition statement it is contained within as
+well as the expression to be returned. The validation method checks that the 
+expression evaluated type is the same as the function definition return type.
 ```javascript
     function foo(x : int) : int {
         y = 2*x
         return y
     }
 ```
-Talk about above
+The evaluation method actually throws a return exception with the evaluated private
+expression. This exception helps the CatScriptProgram know when a return has been 
+evaluated for a function.
 
 ### Function Statements
 
 #### Function Definition Statement
+The function definition statement contains the name of the function, return type,
+argument types and argument names, and lastly a List of statements that are the body
+of the function.
 ```javascript
     function voidReturn_ObjectInput(x){
         print(x)
     }
-```
-Talk about above
 
-```javascript
     function voidReturn_DeclaredTypeInput(x : String){
         print(x)
     }
-```
-Talk about above
-
-```javascript
+    
     function intReturn_IntInput(x : int) : int {
         y = 2*x
         return y
     }
 ```
-Talk about above
+Validate checks to make sure the function name is not already used. It then validates
+all the statements in the body. Lastly it validates return coverage.
 
 #### Function Call Statement
+The function call statement contains the function call expression. The function call expression
+contains all necessary information of the function call: name, type, and arguments being sent in.
 ```javascript
     var double = intReturn_IntInput(5)
     voidReturn_ObjectInput(double)
 ```
-Talk about above
+Within the validate method it validates the expression it contains. The execution 
+method gets the function definition the function call is connected to. We then 
+evaluate arguments from the function call expression. We add all the arguments
+we are sending into the function to the runtime scope. Lastly we invoke the function.
 
 ### List Literal Expression
+List literal expression contains a List of expressions called values. It also
+has a type associated with it. 
 ```javascript
     [1, 2, 3]
     [true, false, false]
     ["A", "Dog", "8"]
 ```
-Talk about above
+The validate method validates all items within the values List. Next type checking
+is performed to make sure all values match the List type. Evaluate creates an ArrayList
+and fills it with evaluated values from the list. Then that ArrayList is returned.
