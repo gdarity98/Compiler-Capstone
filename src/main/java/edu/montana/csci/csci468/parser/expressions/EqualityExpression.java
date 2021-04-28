@@ -57,8 +57,8 @@ public class EqualityExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        Object lhsValue = leftHandSide.evaluate();
-        Object rhsValue = rightHandSide.evaluate();
+        Object lhsValue = leftHandSide.evaluate(runtime);
+        Object rhsValue = rightHandSide.evaluate(runtime);
         boolean equals = String.valueOf(lhsValue).equals(String.valueOf(rhsValue));
         if(operator.getStringValue().equals("==")){
             if(equals){
