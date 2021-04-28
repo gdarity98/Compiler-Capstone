@@ -77,7 +77,7 @@ public class VariableStatement extends Statement {
     //==============================================================
     @Override
     public void execute(CatscriptRuntime runtime) {
-        Object exp = expression.evaluate();
+        Object exp = expression.evaluate(runtime);
         String s = String.valueOf(expression.evaluate(runtime));
 
         if(runtime.getValue(String.valueOf(exp)) != null && String.valueOf(expression.evaluate(runtime)) != null){
