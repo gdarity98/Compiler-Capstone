@@ -456,8 +456,8 @@ public class edu/montana/csci/csci466/bytecode/CatScriptProgram15 extends edu/mo
 
 
  ================================================
-[ERROR] Tests run: 7, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.142 s <<< FAILURE! - in edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest
-[ERROR] recursiveFunctionWorksProperly  Time elapsed: 0.086 s  <<< ERROR!
+[ERROR] Tests run: 7, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.148 s <<< FAILURE! - in edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest
+[ERROR] recursiveFunctionWorksProperly  Time elapsed: 0.089 s  <<< ERROR!
 java.lang.IllegalArgumentException: 
 Error at instruction 3: Argument 1: expected I, but found R execute()V
 00000 R  :  :     ALOAD 0
@@ -473,7 +473,7 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Error at instructi
 Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Argument 1: expected I, but found R
 	at edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest.recursiveFunctionWorksProperly(CatscriptStatementExecutionTest.java:54)
 
-[ERROR] functionDeclarationWorksProperly  Time elapsed: 0.004 s  <<< ERROR!
+[ERROR] functionDeclarationWorksProperly  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram5, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest.functionDeclarationWorksProperly(CatscriptStatementExecutionTest.java:45)
 
@@ -494,7 +494,7 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Error at instructi
 Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Argument 1: expected I, but found R
 	at edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest.returnStatementWorks(CatscriptStatementExecutionTest.java:67)
 
-[ERROR] forStatementWorksProperly  Time elapsed: 0.006 s  <<< ERROR!
+[ERROR] forStatementWorksProperly  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at edu.montana.csci.csci468.bytecode.CatscriptStatementExecutionTest.forStatementWorksProperly(CatscriptStatementExecutionTest.java:40)
 
@@ -1650,7 +1650,7 @@ public class edu/montana/csci/csci466/bytecode/CatScriptProgram50 extends edu/mo
 
 
  ================================================
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in edu.montana.csci.csci468.bytecode.CatscriptBasicExpressionCompileTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 s - in edu.montana.csci.csci468.bytecode.CatscriptBasicExpressionCompileTest
 [INFO] Running edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest
  JVM Bytecode ===================================
 
@@ -1952,20 +1952,20 @@ public class edu/montana/csci/csci466/bytecode/CatScriptProgram61 extends edu/mo
 
 
  ================================================
-[ERROR] Tests run: 15, Failures: 0, Errors: 15, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! - in edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest
+[ERROR] Tests run: 15, Failures: 0, Errors: 15, Skipped: 0, Time elapsed: 0.025 s <<< FAILURE! - in edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest
 [ERROR] listTypeWithComponentTypeArgWorksProperly  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram51, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.listTypeWithComponentTypeArgWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:56)
 
-[ERROR] stringTypeArgWorksProperly  Time elapsed: 0.002 s  <<< ERROR!
+[ERROR] stringTypeArgWorksProperly  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram52, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.stringTypeArgWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:44)
 
-[ERROR] noTypeArgWorksProperly  Time elapsed: 0.002 s  <<< ERROR!
+[ERROR] noTypeArgWorksProperly  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram53, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.noTypeArgWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:20)
 
-[ERROR] mutliArgumentFunctionsWork  Time elapsed: 0.003 s  <<< ERROR!
+[ERROR] mutliArgumentFunctionsWork  Time elapsed: 0.004 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram54, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.mutliArgumentFunctionsWork(CatscriptFunctionArgsAndReturnCompileTest.java:62)
 
@@ -1984,7 +1984,7 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Error at instructi
 Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Argument 1: expected I, but found R
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.returnBoolWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:88)
 
-[ERROR] returnListWithComponentTypeWorksProperlyWithMultipleReturnOptions  Time elapsed: 0 s  <<< ERROR!
+[ERROR] returnListWithComponentTypeWorksProperlyWithMultipleReturnOptions  Time elapsed: 0.001 s  <<< ERROR!
 edu.montana.csci.csci468.parser.ParseErrorException: 
 Parse Errors Occurred:
 
@@ -2041,7 +2041,7 @@ Error: Unexpected Token
 
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.returnListWithComponentTypeWorksProperlyWithMultipleReturnOptions(CatscriptFunctionArgsAndReturnCompileTest.java:107)
 
-[ERROR] returnObjectWorksProperly  Time elapsed: 0 s  <<< ERROR!
+[ERROR] returnObjectWorksProperly  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.IllegalArgumentException: 
 Error at instruction 1: Cannot pop operand off an empty stack. execute()V
 00000 R  :  :     ALOAD 0
@@ -2069,7 +2069,7 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Error at instructi
 Caused by: java.lang.IndexOutOfBoundsException: Cannot pop operand off an empty stack.
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.returnListWithComponentTypeWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:101)
 
-[ERROR] returnListWorksProperly  Time elapsed: 0.001 s  <<< ERROR!
+[ERROR] returnListWorksProperly  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalArgumentException: 
 Error at instruction 1: Cannot pop operand off an empty stack. execute()V
 00000 R  :  :     ALOAD 0
@@ -2083,11 +2083,11 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Error at instructi
 Caused by: java.lang.IndexOutOfBoundsException: Cannot pop operand off an empty stack.
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.returnListWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:94)
 
-[ERROR] objectTypeArgWorksProperly  Time elapsed: 0.002 s  <<< ERROR!
+[ERROR] objectTypeArgWorksProperly  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram59, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.objectTypeArgWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:26)
 
-[ERROR] voidFunctionWorksProperly  Time elapsed: 0.002 s  <<< ERROR!
+[ERROR] voidFunctionWorksProperly  Time elapsed: 0.004 s  <<< ERROR!
 java.lang.VerifyError: (class: edu/montana/csci/csci466/bytecode/CatScriptProgram60, method: execute signature: ()V) Incompatible object argument for function call
 	at edu.montana.csci.csci468.bytecode.CatscriptFunctionArgsAndReturnCompileTest.voidFunctionWorksProperly(CatscriptFunctionArgsAndReturnCompileTest.java:12)
 
@@ -2171,8 +2171,8 @@ Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Argument 1: expect
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.123 s
-[INFO] Finished at: 2021-04-29T09:38:15-06:00
+[INFO] Total time:  2.294 s
+[INFO] Finished at: 2021-05-01T05:00:17-06:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.1:test (default-test) on project CSCI_466_Project: There are test failures.
 [ERROR] 
